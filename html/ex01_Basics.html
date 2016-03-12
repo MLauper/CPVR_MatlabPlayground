@@ -1,0 +1,805 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Basic operations</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-02-28"><meta name="DC.source" content="ex01_Basics.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Basic operations</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Variable assignment</a></li><li><a href="#2">Variable retrieval and selection</a></li><li><a href="#3">Inverse / Transponierung</a></li><li><a href="#4">Zeros, Ones and Randoms</a></li><li><a href="#5">Matrix and Array Operations</a></li><li><a href="#6">Apply action on every elemnt</a></li><li><a href="#7">Matrix multiplication and single value multiplication</a></li><li><a href="#8">Change number format</a></li><li><a href="#9">Concatenation</a></li><li><a href="#10">Magic Square</a></li><li><a href="#11">Accessing arrays</a></li><li><a href="#12">Equal spaced vectors</a></li><li><a href="#13">View workspace content</a></li><li><a href="#14">Save and load workspace</a></li><li><a href="#15">Working with strings</a></li><li><a href="#16">Number to String conversion</a></li><li><a href="#17">Functions</a></li><li><a href="#18">Print a string</a></li><li><a href="#19">Clear output</a></li><li><a href="#20">2D Plots</a></li><li><a href="#21">3D Plots</a></li><li><a href="#22">Subplots / Figures</a></li><li><a href="#23">Working with files</a></li><li><a href="#24">Loops</a></li><li><a href="#25">Conditions</a></li><li><a href="#26">Path folder</a></li><li><a href="#27">Use help</a></li></ul></div><h2>Variable assignment<a name="1"></a></h2><pre class="codeinput">a = 1
+b = [1 2 3]
+c = [1,2,3]
+d = [1,2,3;4,5,6]
+</pre><pre class="codeoutput">
+a =
+
+     1
+
+
+b =
+
+     1     2     3
+
+
+c =
+
+     1     2     3
+
+
+d =
+
+     1     2     3
+     4     5     6
+
+</pre><h2>Variable retrieval and selection<a name="2"></a></h2><pre class="codeinput">m = [1,2,3;4,5,6;7,8,9]
+</pre><pre class="codeoutput">
+m =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+</pre><h2>Inverse / Transponierung<a name="3"></a></h2><pre class="codeinput">m'
+m''
+</pre><pre class="codeoutput">
+ans =
+
+     1     4     7
+     2     5     8
+     3     6     9
+
+
+ans =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+</pre><h2>Zeros, Ones and Randoms<a name="4"></a></h2><pre class="codeinput">zeros(1,3)
+ones(3,1)
+rand(3,3)
+</pre><pre class="codeoutput">
+ans =
+
+     0     0     0
+
+
+ans =
+
+     1
+     1
+     1
+
+
+ans =
+
+    0.7922    0.0357    0.6787
+    0.9595    0.8491    0.7577
+    0.6557    0.9340    0.7431
+
+</pre><h2>Matrix and Array Operations<a name="5"></a></h2><pre class="codeinput">a = [1,2,3]
+a + 10
+</pre><pre class="codeoutput">
+a =
+
+     1     2     3
+
+
+ans =
+
+    11    12    13
+
+</pre><h2>Apply action on every elemnt<a name="6"></a></h2><pre class="codeinput">a + 2
+a - 2
+a * 2
+</pre><pre class="codeoutput">
+ans =
+
+     3     4     5
+
+
+ans =
+
+    -1     0     1
+
+
+ans =
+
+     2     4     6
+
+</pre><h2>Matrix multiplication and single value multiplication<a name="7"></a></h2><pre class="codeinput">a = [1,2,3;4,5,6;7,8,9]
+b = [1,2,3;4,5,6;7,8,9]
+<span class="comment">% Matrix Multiplication</span>
+a*b
+<span class="comment">% Single value multiplication</span>
+a.*b
+</pre><pre class="codeoutput">
+a =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+
+b =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+
+ans =
+
+    30    36    42
+    66    81    96
+   102   126   150
+
+
+ans =
+
+     1     4     9
+    16    25    36
+    49    64    81
+
+</pre><h2>Change number format<a name="8"></a></h2><pre class="codeinput">format <span class="string">long</span>
+sin(1)
+format <span class="string">short</span>
+sin(1)
+</pre><pre class="codeoutput">
+ans =
+
+   0.841470984807897
+
+
+ans =
+
+    0.8415
+
+</pre><h2>Concatenation<a name="9"></a></h2><pre class="codeinput">a = [1,2,3]
+b = [a,a,a;a,a,a]
+</pre><pre class="codeoutput">
+a =
+
+     1     2     3
+
+
+b =
+
+     1     2     3     1     2     3     1     2     3
+     1     2     3     1     2     3     1     2     3
+
+</pre><h2>Magic Square<a name="10"></a></h2><pre class="codeinput">a = magic(3)
+</pre><pre class="codeoutput">
+a =
+
+     8     1     6
+     3     5     7
+     4     9     2
+
+</pre><h2>Accessing arrays<a name="11"></a></h2><pre class="codeinput">a = [1,2,3;4,5,6;7,8,9]
+a(2,2)
+a(2,:)
+a(:,2)
+a(1:2,2)
+<span class="comment">%Delete from a Matrix</span>
+a(:,3) = []
+a(3,:) = []
+</pre><pre class="codeoutput">
+a =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+
+ans =
+
+     5
+
+
+ans =
+
+     4     5     6
+
+
+ans =
+
+     2
+     5
+     8
+
+
+ans =
+
+     2
+     5
+
+
+a =
+
+     1     2
+     4     5
+     7     8
+
+
+a =
+
+     1     2
+     4     5
+
+</pre><h2>Equal spaced vectors<a name="12"></a></h2><p>start:step:end</p><pre class="codeinput">1:5:16
+a = [1 2 3 4 5 6 7 8 9 10]
+a(1:2:10)
+</pre><pre class="codeoutput">
+ans =
+
+     1     6    11    16
+
+
+a =
+
+     1     2     3     4     5     6     7     8     9    10
+
+
+ans =
+
+     1     3     5     7     9
+
+</pre><h2>View workspace content<a name="13"></a></h2><pre class="codeinput">whos
+</pre><pre class="codeoutput">  Name                  Size                 Bytes  Class      Attributes
+
+  Auswahl             101x151               122008  double               
+  AuswahlOrig         101x151               122008  double               
+  Bild                512x512x3            6291456  double               
+  FX                    3x3                     72  double               
+  Result              101x151               122008  double               
+  Vektor           786432x1                6291456  double               
+  X                   512x512x3             786432  logical              
+  Y                    21x21                  3528  double               
+  Z                    21x21                  3528  double               
+  a                     1x10                    80  double               
+  ans                   1x5                     40  double               
+  b                     2x9                    144  double               
+  c                     1x3                     24  double               
+  concatText            1x23                    46  char                 
+  d                     2x3                     48  double               
+  i                     1x1                      8  double               
+  location              1x1                      8  double               
+  m                     3x3                     72  double               
+  maximum               1x1                      8  double               
+  otherText             1x9                     18  char                 
+  pic                 512x512x3             786432  uint8                
+  t                     1x21                   168  double               
+  text                  1x25                    50  char                 
+  x                    41x41                 13448  double               
+  y                    41x41                 13448  double               
+  y2                    1x201                 1608  double               
+  z                    41x41                 13448  double               
+
+</pre><h2>Save and load workspace<a name="14"></a></h2><pre class="codeinput">save <span class="string">myfile.mat</span>
+load <span class="string">myfile.mat</span>
+</pre><h2>Working with strings<a name="15"></a></h2><p>Text is stored like all Matlab variables as array</p><pre class="codeinput">text = <span class="string">'some text'</span>
+otherText = <span class="string">'more text'</span>
+<span class="comment">% Concatenation is done the same way as with arrays</span>
+concatText = [text,<span class="string">' and '</span>,otherText]
+</pre><pre class="codeoutput">
+text =
+
+some text
+
+
+otherText =
+
+more text
+
+
+concatText =
+
+some text and more text
+
+</pre><h2>Number to String conversion<a name="16"></a></h2><pre class="codeinput">a = 10
+b = sin(1)
+text = [num2str(a),<span class="string">' or '</span>,int2str(a),<span class="string">' AND '</span>,num2str(b),<span class="string">' or '</span>,int2str(b)]
+</pre><pre class="codeoutput">
+a =
+
+    10
+
+
+b =
+
+    0.8415
+
+
+text =
+
+10 or 10 AND 0.84147 or 1
+
+</pre><h2>Functions<a name="17"></a></h2><pre class="codeinput">a = [1,2,7;1,2,1]
+b = [4,5,6;2,1,2]
+max(a)
+min(a)
+<span class="comment">% multiple return values</span>
+c = [1,2,3]
+[maximum,location] = max(c)
+sqrt(9)
+pi
+</pre><pre class="codeoutput">
+a =
+
+     1     2     7
+     1     2     1
+
+
+b =
+
+     4     5     6
+     2     1     2
+
+
+ans =
+
+     1     2     7
+
+
+ans =
+
+     1     2     1
+
+
+c =
+
+     1     2     3
+
+
+maximum =
+
+     3
+
+
+location =
+
+     3
+
+
+ans =
+
+     3
+
+
+ans =
+
+    3.1416
+
+</pre><h2>Print a string<a name="18"></a></h2><pre class="codeinput">disp(<span class="string">'hello world'</span>)
+</pre><pre class="codeoutput">hello world
+</pre><h2>Clear output<a name="19"></a></h2><pre class="codeinput">clc
+</pre><h2>2D Plots<a name="20"></a></h2><pre class="codeinput">x = 0:pi/100:2*pi;
+y=sin(x);
+<span class="comment">% Possible color/linetype arguments bgr and +o*</span>
+plot(x,y,<span class="string">'b+'</span>)
+xlabel(<span class="string">'x-Achse'</span>)
+ylabel(<span class="string">'y-Achse'</span>)
+title(<span class="string">'Titel des Plots'</span>)
+<span class="comment">% Use hold to enable multiple plots in the same window</span>
+hold <span class="string">on</span>
+y2 = x;
+plot(x,y2,<span class="string">'g:'</span>)
+hold <span class="string">off</span>
+<span class="comment">% Alternative you can enter multiple x/y values</span>
+plot(x,y,x,y2)
+</pre><img vspace="5" hspace="5" src="ex01_Basics_01.png" alt=""> <h2>3D Plots<a name="21"></a></h2><p>Meshgric generates X where each value in a column is a value of the first input and Y where each value in a row is a value of the second input / first if only one exists</p><pre class="codeinput">[X,Y] = meshgrid(1:3)
+[X,Y] = meshgrid(1:3,4:6)
+
+<span class="comment">% 3D Plots Example 1</span>
+figure(1);
+[X,Y] = meshgrid(1:.1:10);
+Z = X.^2;
+subplot(1,3,1); mesh(Z); title(<span class="string">'X^2'</span>);
+Z = X.^2 + Y.^2;
+<span class="comment">% On the plot, the axes describe the index of X and Y, not their actual</span>
+<span class="comment">% values</span>
+subplot(1,3,2); mesh(Z); title(<span class="string">'X^2 + y^2'</span>);
+<span class="comment">% If all axes are defined explizit, the values are displayed insted of the</span>
+<span class="comment">% index</span>
+subplot(1,3,3); mesh(X,Y,Z); title(<span class="string">'X^2 + y^2'</span>);
+
+<span class="comment">% 3D Plots Example 2</span>
+figure(2);
+
+[x,y] = meshgrid(-2:0.1:2);
+z = sin(x);
+mesh(z);
+<span class="comment">% Hold on must be after initial drawing (otherwise only 2D Plot will be</span>
+<span class="comment">% created)</span>
+hold <span class="string">on</span>;
+z = y.^2;
+mesh(z);
+hold <span class="string">off</span>;
+figure(3);
+<span class="comment">% Surf creates a surface</span>
+surf(z);
+
+<span class="comment">% 3D Plots Example 3</span>
+figure(4);
+[X,Y] = meshgrid(-2:.2:2);
+Z = X .* exp(-X.^2 - Y.^2);
+surf(X,Y,Z)
+</pre><pre class="codeoutput">
+X =
+
+     1     2     3
+     1     2     3
+     1     2     3
+
+
+Y =
+
+     1     1     1
+     2     2     2
+     3     3     3
+
+
+X =
+
+     1     2     3
+     1     2     3
+     1     2     3
+
+
+Y =
+
+     4     4     4
+     5     5     5
+     6     6     6
+
+</pre><img vspace="5" hspace="5" src="ex01_Basics_02.png" alt=""> <img vspace="5" hspace="5" src="ex01_Basics_03.png" alt=""> <img vspace="5" hspace="5" src="ex01_Basics_04.png" alt=""> <img vspace="5" hspace="5" src="ex01_Basics_05.png" alt=""> <h2>Subplots / Figures<a name="22"></a></h2><pre class="codeinput">t = 0:pi/10:2*pi;
+[X,Y,Z] = cylinder(4*cos(t));
+subplot(2,2,1); mesh(X); title(<span class="string">'X'</span>);
+subplot(2,2,2); mesh(Y); title(<span class="string">'Y'</span>);
+subplot(2,2,3); mesh(Z); title(<span class="string">'Z'</span>);
+subplot(2,2,4); mesh(X,Y,Z); title(<span class="string">'X,Y,Z'</span>);
+figure(2);
+subplot(2,2,1); mesh(X); title(<span class="string">'X'</span>);
+subplot(2,2,2); mesh(Y); title(<span class="string">'Y'</span>);
+subplot(2,2,3); mesh(Z); title(<span class="string">'Z'</span>);
+subplot(2,2,4); mesh(X,Y,Z); title(<span class="string">'X,Y,Z'</span>);
+</pre><img vspace="5" hspace="5" src="ex01_Basics_06.png" alt=""> <img vspace="5" hspace="5" src="ex01_Basics_07.png" alt=""> <h2>Working with files<a name="23"></a></h2><pre class="codeinput"><span class="comment">% Modify files:</span>
+
+<span class="comment">% edit test</span>
+
+<span class="comment">% Run files:</span>
+
+<span class="comment">% test</span>
+</pre><h2>Loops<a name="24"></a></h2><pre class="codeinput">a = [1 2 3]
+<span class="keyword">for</span> i = 1:3
+    disp(num2str(a(i)))
+<span class="keyword">end</span>
+i = 1
+<span class="keyword">while</span> i &lt;= 3
+    disp(num2str(a(i)))
+    i = i + 1;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+a =
+
+     1     2     3
+
+1
+2
+3
+
+i =
+
+     1
+
+1
+2
+3
+</pre><h2>Conditions<a name="25"></a></h2><pre class="codeinput">i = 2;
+<span class="keyword">if</span> (i &lt; 2)
+    disp(<span class="string">'i is smaller than 2'</span>)
+<span class="keyword">elseif</span>(i &gt; 2)
+    disp(<span class="string">'i is bigger than 2'</span>)
+<span class="keyword">else</span>
+    disp(<span class="string">'i is 2'</span>)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">i is 2
+</pre><h2>Path folder<a name="26"></a></h2><p>Files to run must either be located in the current folder or in the search path. You can add a path by right clicking in the current folder and select Add to Path</p><h2>Use help<a name="27"></a></h2><pre class="codeinput"><span class="comment">% Get documentation with</span>
+
+<span class="comment">%doc mean</span>
+
+<span class="comment">% Get abbreviated text version of documentation with</span>
+
+<span class="comment">%help mean</span>
+
+<span class="comment">% Get demo and examples of Matlab</span>
+
+<span class="comment">%demo</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Basic operations
+
+%% Variable assignment
+a = 1
+b = [1 2 3]
+c = [1,2,3]
+d = [1,2,3;4,5,6]
+
+%% Variable retrieval and selection
+m = [1,2,3;4,5,6;7,8,9]
+
+%% Inverse / Transponierung
+m'
+m''
+
+%% Zeros, Ones and Randoms
+zeros(1,3)
+ones(3,1)
+rand(3,3)
+
+%% Matrix and Array Operations
+a = [1,2,3]
+a + 10
+
+%% Apply action on every elemnt
+a + 2
+a - 2
+a * 2
+
+%% Matrix multiplication and single value multiplication
+a = [1,2,3;4,5,6;7,8,9]
+b = [1,2,3;4,5,6;7,8,9]
+% Matrix Multiplication
+a*b
+% Single value multiplication
+a.*b
+
+%% Change number format
+format long
+sin(1)
+format short
+sin(1)
+
+%% Concatenation
+a = [1,2,3]
+b = [a,a,a;a,a,a]
+
+%% Magic Square
+a = magic(3)
+
+%% Accessing arrays
+a = [1,2,3;4,5,6;7,8,9]
+a(2,2)
+a(2,:)
+a(:,2)
+a(1:2,2)
+%Delete from a Matrix
+a(:,3) = []
+a(3,:) = []
+
+%% Equal spaced vectors
+% start:step:end
+1:5:16
+a = [1 2 3 4 5 6 7 8 9 10]
+a(1:2:10)
+
+%% View workspace content
+whos
+
+%% Save and load workspace
+save myfile.mat
+load myfile.mat
+
+%% Working with strings
+% Text is stored like all Matlab variables as array
+text = 'some text'
+otherText = 'more text'
+% Concatenation is done the same way as with arrays
+concatText = [text,' and ',otherText]
+
+%% Number to String conversion
+a = 10
+b = sin(1)
+text = [num2str(a),' or ',int2str(a),' AND ',num2str(b),' or ',int2str(b)]
+
+%% Functions
+a = [1,2,7;1,2,1]
+b = [4,5,6;2,1,2]
+max(a)
+min(a)
+% multiple return values
+c = [1,2,3]
+[maximum,location] = max(c)
+sqrt(9)
+pi
+
+%% Print a string
+disp('hello world')
+
+%% Clear output
+clc
+
+%% 2D Plots
+x = 0:pi/100:2*pi;
+y=sin(x);
+% Possible color/linetype arguments bgr and +o*
+plot(x,y,'b+')
+xlabel('x-Achse')
+ylabel('y-Achse')
+title('Titel des Plots')
+% Use hold to enable multiple plots in the same window
+hold on
+y2 = x;
+plot(x,y2,'g:')
+hold off
+% Alternative you can enter multiple x/y values
+plot(x,y,x,y2)
+
+%% 3D Plots
+% Meshgric generates X where each value in a column is a value of the first
+% input and Y where each value in a row is a value of the second input /
+% first if only one exists
+[X,Y] = meshgrid(1:3)
+[X,Y] = meshgrid(1:3,4:6)
+
+% 3D Plots Example 1
+figure(1);
+[X,Y] = meshgrid(1:.1:10);
+Z = X.^2;
+subplot(1,3,1); mesh(Z); title('X^2');
+Z = X.^2 + Y.^2;
+% On the plot, the axes describe the index of X and Y, not their actual
+% values
+subplot(1,3,2); mesh(Z); title('X^2 + y^2');
+% If all axes are defined explizit, the values are displayed insted of the
+% index
+subplot(1,3,3); mesh(X,Y,Z); title('X^2 + y^2');
+
+% 3D Plots Example 2
+figure(2);
+
+[x,y] = meshgrid(-2:0.1:2);
+z = sin(x);
+mesh(z);
+% Hold on must be after initial drawing (otherwise only 2D Plot will be
+% created)
+hold on;
+z = y.^2;
+mesh(z);
+hold off;
+figure(3);
+% Surf creates a surface
+surf(z);
+
+% 3D Plots Example 3
+figure(4);
+[X,Y] = meshgrid(-2:.2:2);
+Z = X .* exp(-X.^2 - Y.^2);
+surf(X,Y,Z)
+
+%% Subplots / Figures
+t = 0:pi/10:2*pi;
+[X,Y,Z] = cylinder(4*cos(t));
+subplot(2,2,1); mesh(X); title('X');
+subplot(2,2,2); mesh(Y); title('Y');
+subplot(2,2,3); mesh(Z); title('Z');
+subplot(2,2,4); mesh(X,Y,Z); title('X,Y,Z');
+figure(2);
+subplot(2,2,1); mesh(X); title('X');
+subplot(2,2,2); mesh(Y); title('Y');
+subplot(2,2,3); mesh(Z); title('Z');
+subplot(2,2,4); mesh(X,Y,Z); title('X,Y,Z');
+
+%% Working with files
+%
+
+% Modify files:
+
+% edit test
+
+% Run files:
+
+% test
+
+%% Loops
+a = [1 2 3]
+for i = 1:3
+    disp(num2str(a(i)))
+end
+i = 1
+while i <= 3
+    disp(num2str(a(i)))
+    i = i + 1;
+end
+
+%% Conditions
+i = 2;
+if (i < 2) 
+    disp('i is smaller than 2')
+elseif(i > 2)
+    disp('i is bigger than 2')
+else
+    disp('i is 2')
+end
+
+%% Path folder
+% Files to run must either be located in the current folder or in the
+% search path. You can add a path by right clicking in the current folder
+% and select Add to Path
+
+%% Use help
+
+% Get documentation with
+
+%doc mean
+
+% Get abbreviated text version of documentation with
+
+%help mean
+
+% Get demo and examples of Matlab
+
+%demo
+##### SOURCE END #####
+--></body></html>
